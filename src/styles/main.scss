@@ -134,12 +134,34 @@ body {
 		}
 	}
 
-	&__toy-1,
-	&__toy-2 {
+	&__tree-top {
+		position: absolute;
+		z-index: 10;
+		left: 50%;
+		margin-left: -430px;
+		width: 227px;
+		max-width: 37.6vw;
+		background: url(../images/tree-top.png) no-repeat;
+		background-size: contain;
+
+		&:before {
+			content: " ";
+			padding-top: 217/227 * 100%;
+			display: block;
+		}
+	}
+
+	&__toy {
 		position: absolute;
 		z-index: 20;
 		top: 0;
 		left: 50%;
+		transform-origin: 50% 0;
+		animation: toy-shake-5deg 2s 0s infinite ease-in-out;
+	}
+
+	&__toy--1,
+	&__toy--2 {
 		background: url(../images/toy-cone.svg) no-repeat;
 		background-size: contain;
 
@@ -151,25 +173,25 @@ body {
 	}
 
 	// cone left
-	&__toy-1 {
-		transform: translate(-730px, -40%);
+	&__toy--1 {
+		margin-left: -730px;
+		margin-top: -80px;
 		width: 40px;
 		max-width: 6.6vw;
 	}
 
 	// cone right
-	&__toy-2 {
-		transform: translate(420px, 0px);
+	&__toy--2 {
+		margin-left: 420px;
 		width: 60px;
 		max-width: 10vw;
+		animation-delay: -1.3s;
+		animation-name: toy-shake-1deg;
+		animation-duration: 1.5s;
 	}
 
-	&__toy-3,
-	&__toy-4 {
-		position: absolute;
-		z-index: 20;
-		top: 0;
-		left: 50%;
+	&__toy--3,
+	&__toy--4 {
 		background: url(../images/toy-snowflake.svg) no-repeat;
 		background-size: contain;
 
@@ -181,47 +203,47 @@ body {
 	}
 
 	// snowflake left
-	&__toy-3 {
-		transform: translate(-570px, 0);
+	&__toy--3 {
+		margin-left: -570px;
 		width: 126px;
 		max-width: 21vw;
+		animation-delay: -2s;
+		animation-name: toy-shake-1deg;
+		animation-duration: 1.5s;
 	}
 
 	// snowflake right
-	&__toy-4 {
-		transform: translate(190px, -40%);
+	&__toy--4 {
+		margin-left: 190px;
+		margin-top: -70px;
 		width: 94px;
 		max-width: 15.6vw;
+		animation-delay: -0.5s;
 	}
 
-	&__toy-5 {
-		position: absolute;
-		z-index: 20;
-		top: 0;
-		left: 50%;
-		background: url(../images/toy-tree.png) no-repeat;
+	&__toy--5 {
+		background: url(../images/toy-tree.svg) no-repeat;
 		background-size: contain;
-		transform: translate(-430px, 0px);
-		width: 226px;
-		max-width: 37vw;
+		margin-left: -350px;
+		margin-top: 100px;
+		width: 115px;
+		max-width: 19vw;
+		animation-delay: -3.5s;
 
 		&:before {
 			content: " ";
-			padding-top: 391/227 * 100%;
+			padding-top: 289/115 * 100%;
 			display: block;
 		}
 	}
 
-	&__toy-6 {
-		position: absolute;
-		z-index: 20;
-		top: 0;
-		left: 50%;
+	&__toy--6 {
 		background: url(../images/toy-dots.svg) no-repeat;
 		background-size: contain;
-		transform: translate(610px, 0px);
+		margin-left: 610px;
 		width: 74px;
 		max-width: 12vw;
+		animation-delay: -2s;
 
 		&:before {
 			content: " ";
@@ -358,6 +380,28 @@ body {
 	}
 	50% {
 		transform: translateX(80px);
+	}
+}
+
+@keyframes toy-shake-5deg {
+	0%,
+	100% {
+		transform: rotate(-5deg);
+	}
+
+	50% {
+		transform: rotate(5deg);
+	}
+}
+
+@keyframes toy-shake-1deg {
+	0%,
+	100% {
+		transform: rotate(-1deg);
+	}
+
+	50% {
+		transform: rotate(1deg);
 	}
 }
 

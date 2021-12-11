@@ -1,0 +1,75 @@
+body {
+	background: #005e29;
+}
+
+.radial-background {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: calc(min(100vh, 100vw));
+	height: calc(min(100vh, 100vw));
+	background: radial-gradient(50% 50% at 50% 50%, #8fbe21 0%, #005e29 100%);
+}
+
+@keyframes snowflakes-fall {
+	0% {
+		top: -10%;
+	}
+	100% {
+		top: 100%;
+	}
+}
+@keyframes snowflakes-shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(80px);
+	}
+}
+.snowflakes > div {
+	position: fixed;
+	top: -10%;
+	z-index: 9999;
+	user-select: none;
+	cursor: default;
+	animation-name: snowflakes-fall, snowflakes-shake;
+	animation-timing-function: linear, ease-in-out;
+	animation-iteration-count: infinite, infinite;
+	animation-play-state: running, running;
+
+	&:before {
+		content: " ";
+		display: block;
+		width: 5px;
+		height: 5px;
+		background: #fff;
+		border-radius: 50%;
+	}
+}
+
+@for $i from 0 through 50 {
+	.snowflakes--quick > div:nth-child(#{$i}) {
+		left: random(100) * 1%;
+		animation-delay: random(20) * 0.5s, random(20) * 0.5s;
+		animation-duration: 1 + random(10) * 0.2s, 2 + random(3) * 1s;
+
+		&:before {
+			transform: scale(random() + 0.5);
+		}
+	}
+}
+
+@for $i from 0 through 10 {
+	.snowflakes--slow > div:nth-child(#{$i}) {
+		left: random(100) * 1%;
+		animation-delay: random(20) * 0.5s, random(20) * 0.5s;
+		animation-duration: 3 + random(10) * 0.2s, 2 + random(3) * 1s;
+
+		&:before {
+			transform: scale(1 + random(2));
+		}
+	}
+}

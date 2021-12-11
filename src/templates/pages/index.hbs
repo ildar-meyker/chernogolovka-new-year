@@ -3,15 +3,65 @@ title: Главная
 layout: default.hbs
 ---
 
-<div class="radial-background"></div>
 
-Голос природы поздравляет!
+<div class="wrapper">
 
-Вытяни новогоднее пожелание и подарок!
+    <div class="welcome__toy-1"></div>
+    <div class="welcome__toy-2"></div>
+    <div class="welcome__toy-3"></div>
+    <div class="welcome__toy-4"></div>
+    <div class="welcome__toy-5"></div>
+    <div class="welcome__toy-6"></div>
 
-вытянуть
+    <main class="content">
 
-Не упусти шанс получить подарок
+        <header class="header">
+            <a href="#" class="header__logo">
+                <img src="images/logo.svg" alt="">
+            </a>
+        </header>
+        
+        <section class="welcome">
+            <div class="welcome__radial-bg"></div>
+            <div class="welcome__tree-left"></div>
+            <div class="welcome__tree-right"></div>
+            
+            <div class="welcome__content">
+
+                <div class="welcome__image"></div>
+
+                <h1 class="welcome__title">
+                    Голос природы поздравляет!
+                </h1>
+
+                <div class="welcome__desc">
+                    Вытяни новогоднее пожелание и подарок!
+                </div>
+
+                <button type="button" class="welcome__button">
+                    
+                    вытянуть
+                </button>
+
+                <div class="welcome__tip">
+                    Не упусти шанс получить подарок
+                </div>
+            </div>
+        </section>
+
+        <table>
+            <table>
+                <td>
+                    <div class="bird"></div>
+                </td>
+                <td>
+                    <div class="arrow"></div>
+                </td>
+            </table>
+        </table>
+    </main>
+
+</div>
 
 <div class="snowflakes snowflakes--quick" aria-hidden="true">
   {{#repeat 50}}

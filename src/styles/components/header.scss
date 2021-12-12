@@ -1,14 +1,21 @@
 .header {
 	padding: 30px 0;
 	text-align: center;
+	line-height: 0;
 
 	&__logo {
 		display: inline-block;
-		line-height: 0;
 
 		img {
 			width: 44vw;
 			max-width: 214px;
 		}
+	}
+}
+
+@media (max-width: 767.98px) {
+	.header {
+		padding-top: 50px;
+		padding-bottom: 20px;
 	}
 }

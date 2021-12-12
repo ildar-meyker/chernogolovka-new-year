@@ -1,0 +1,142 @@
+.toys {
+	&__tree {
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		left: 50%;
+		margin-left: -430px;
+		width: 227px;
+		max-width: 37.6vw;
+		background: url(../images/toys/tree.png) no-repeat;
+		background-size: contain;
+
+		&:before {
+			content: " ";
+			padding-top: 217/227 * 100%;
+			display: block;
+		}
+	}
+
+	&__item {
+		position: absolute;
+		z-index: 20;
+		top: 0;
+		left: 50%;
+		transform-origin: 50% 0;
+		animation: toys-shake-5deg 2s 0s infinite ease-in-out;
+	}
+
+	&__item--1,
+	&__item--2 {
+		background: url(../images/toys/toy-cone.svg) no-repeat;
+		background-size: contain;
+
+		&:before {
+			content: " ";
+			padding-top: 300/60 * 100%;
+			display: block;
+		}
+	}
+
+	// cone left
+	&__item--1 {
+		margin-left: -730px;
+		margin-top: -80px;
+		width: 40px;
+		max-width: 6.6vw;
+	}
+
+	// cone right
+	&__item--2 {
+		margin-left: 420px;
+		width: 60px;
+		max-width: 10vw;
+		animation-delay: -1.3s;
+		animation-name: toys-shake-1deg;
+		animation-duration: 1.5s;
+	}
+
+	&__item--3,
+	&__item--4 {
+		background: url(../images/toys/toy-snowflake.svg) no-repeat;
+		background-size: contain;
+
+		&:before {
+			content: " ";
+			padding-top: 271/126 * 100%;
+			display: block;
+		}
+	}
+
+	// snowflake left
+	&__item--3 {
+		margin-left: -570px;
+		width: 126px;
+		max-width: 21vw;
+		animation-delay: -2s;
+		animation-name: toys-shake-1deg;
+		animation-duration: 1.5s;
+	}
+
+	// snowflake right
+	&__item--4 {
+		margin-left: 190px;
+		margin-top: -70px;
+		width: 94px;
+		max-width: 15.6vw;
+		animation-delay: -0.5s;
+	}
+
+	&__item--5 {
+		background: url(../images/toys/toy-tree.svg) no-repeat;
+		background-size: contain;
+		margin-left: -350px;
+		margin-top: 100px;
+		width: 115px;
+		max-width: 19vw;
+		animation-delay: -3.5s;
+
+		&:before {
+			content: " ";
+			padding-top: 289/115 * 100%;
+			display: block;
+		}
+	}
+
+	&__item--6 {
+		background: url(../images/toys/toy-dots.svg) no-repeat;
+		background-size: contain;
+		margin-left: 610px;
+		width: 74px;
+		max-width: 12vw;
+		animation-delay: -2s;
+
+		&:before {
+			content: " ";
+			padding-top: 156/75 * 100%;
+			display: block;
+		}
+	}
+}
+
+@keyframes toys-shake-5deg {
+	0%,
+	100% {
+		transform: rotate(-5deg);
+	}
+
+	50% {
+		transform: rotate(5deg);
+	}
+}
+
+@keyframes toys-shake-1deg {
+	0%,
+	100% {
+		transform: rotate(-1deg);
+	}
+
+	50% {
+		transform: rotate(1deg);
+	}
+}

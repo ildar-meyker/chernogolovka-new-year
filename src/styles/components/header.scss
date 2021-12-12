@@ -1,0 +1,13 @@
+.header {
+	padding: 30px 0;
+	text-align: center;
+
+	&__logo {
+		display: inline-block;
+		line-height: 0;
+
+		img {
+			width: 215px;
+		}
+	}
+}

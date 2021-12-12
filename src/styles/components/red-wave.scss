@@ -1,0 +1,61 @@
+.red-wave {
+	max-width: 800px;
+	aspect-ratio: 1/1;
+	background: url("../images/red-wave.png") no-repeat;
+	background-size: contain;
+	display: flex;
+	flex-direction: column;
+	padding: calc(min(12vw, 90px)) 0;
+
+	&__control {
+		text-align: center;
+	}
+
+	&__back {
+		text-align: center;
+		font-family: inherit;
+		color: #fff;
+
+		i {
+			font-size: 60px;
+		}
+
+		span {
+			display: block;
+			font-size: 18px;
+			font-weight: 700;
+		}
+	}
+
+	&__content {
+		margin: auto;
+		max-width: 490px;
+		text-transform: uppercase;
+		text-align: center;
+		color: #fff;
+	}
+
+	&__title {
+		font-size: 22px;
+		font-weight: 700;
+		line-height: (35/22);
+	}
+
+	&__desc {
+		margin-top: 5px;
+		font-size: 18px;
+		line-height: (28/18);
+	}
+
+	&__social {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 44px;
+		color: #fff;
+
+		> a {
+			margin: 0 10px;
+		}
+	}
+}

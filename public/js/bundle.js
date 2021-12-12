@@ -10991,6 +10991,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_globals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/globals */ "./src/js/modules/globals.js");
 /* harmony import */ var _modules_Notify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Notify */ "./src/js/modules/Notify.js");
 /* harmony import */ var _modules_Welcome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Welcome */ "./src/js/modules/Welcome.js");
+/* harmony import */ var _modules_Loader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/Loader */ "./src/js/modules/Loader.js");
+
 
 
 
@@ -11021,6 +11023,36 @@ var Bird = {
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (Bird);
+
+/***/ }),
+
+/***/ "./src/js/modules/Loader.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/Loader.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Loader = {
+  hideLoader: function hideLoader() {
+    $("#loader__progress__level").css({
+      width: "100%"
+    });
+    setTimeout(function () {
+      $("#loader").removeClass("active");
+    }, 300);
+  },
+  _handleWindowLoad: function _handleWindowLoad() {
+    this.hideLoader();
+  },
+  init: function init() {
+    window.onload = this._handleWindowLoad.bind(this);
+  }
+};
+Loader.init();
+/* harmony default export */ __webpack_exports__["default"] = (Loader);
 
 /***/ }),
 

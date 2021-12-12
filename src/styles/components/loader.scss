@@ -1,0 +1,53 @@
+.loader {
+	.welcome,
+	.toys,
+	.bird,
+	.lemon,
+	.red-wave {
+		transition: opacity 1s 1s;
+	}
+
+	&.active {
+		.welcome,
+		.toys,
+		.bird,
+		.lemon,
+		.red-wave {
+			opacity: 0;
+		}
+		.loader__progress {
+			opacity: 1;
+		}
+	}
+
+	&__progress {
+		transition: opacity 0s 1s;
+		opacity: 0;
+		position: absolute;
+		top: 55%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 50%;
+		max-width: 200px;
+		height: 10px;
+		background: #03441d;
+		border-radius: 100px;
+
+		&__level {
+			height: 100%;
+			width: 0;
+			background: #003816;
+			border-radius: 100px;
+			animation: loader-progress 5s forwards;
+		}
+	}
+}
+
+@keyframes loader-progress {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 90%;
+	}
+}

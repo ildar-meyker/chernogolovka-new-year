@@ -1,0 +1,54 @@
+.bird {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50vw;
+	height: 50vw;
+
+	&__image {
+		transform: translate(-50%, -50%);
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		width: 10vw;
+		max-width: 110px;
+		background: url(../images/bird-states/1.svg) no-repeat;
+		animation: bird-fly 0.8s infinite;
+
+		&:before {
+			content: " ";
+			padding-top: 122/110 * 100%;
+			display: block;
+		}
+
+		&.speed-fast {
+			animation-duration: 0.3s;
+		}
+	}
+}
+
+@keyframes bird-fly {
+	0% {
+		background-image: url(../images/bird-states/1.svg);
+	}
+
+	20% {
+		background-image: url(../images/bird-states/2.svg);
+	}
+
+	40% {
+		background-image: url(../images/bird-states/3.svg);
+	}
+
+	60% {
+		background-image: url(../images/bird-states/4.svg);
+	}
+
+	80% {
+		background-image: url(../images/bird-states/5.svg);
+	}
+
+	100% {
+		background-image: url(../images/bird-states/6.svg);
+	}
+}

@@ -60,6 +60,8 @@
 	}
 
 	&__image {
+		transition: all 0.3s;
+		transform-origin: 50% 0;
 		max-width: 570px;
 		margin: 0 auto;
 		background: url(../images/basket.png) no-repeat 50% 50%;
@@ -70,12 +72,24 @@
 			padding-top: 100%;
 			display: block;
 		}
+
+		&.scaled {
+			transform: scale(1.5);
+		}
 	}
 
 	&__title {
 		text-transform: uppercase;
 		font-size: 52px;
 		font-weight: 700;
+	}
+
+	&__text {
+		transition: all 0.2s;
+
+		&.hidden {
+			opacity: 0;
+		}
 	}
 
 	&__desc {

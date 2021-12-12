@@ -7,6 +7,7 @@
 @import "./components/snowflakes";
 @import "./components/lemon";
 @import "./components/toys";
+@import "./components/bird";
 
 body {
 	background: #005e29;
@@ -16,37 +17,4 @@ body {
 .wrapper {
 	position: relative;
 	overflow: hidden;
-}
-
-.bird {
-	width: 110px;
-	height: 122px;
-	background: url(../images/bird-states/1.svg) no-repeat;
-	animation: bird-fly 1s infinite;
-}
-
-@keyframes bird-fly {
-	0% {
-		background-image: url(../images/bird-states/1.svg);
-	}
-
-	20% {
-		background-image: url(../images/bird-states/2.svg);
-	}
-
-	40% {
-		background-image: url(../images/bird-states/3.svg);
-	}
-
-	60% {
-		background-image: url(../images/bird-states/4.svg);
-	}
-
-	80% {
-		background-image: url(../images/bird-states/5.svg);
-	}
-
-	100% {
-		background-image: url(../images/bird-states/6.svg);
-	}
 }

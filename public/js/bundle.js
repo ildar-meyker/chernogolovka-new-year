@@ -10990,11 +10990,37 @@ return jQuery;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_globals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/globals */ "./src/js/modules/globals.js");
 /* harmony import */ var _modules_Notify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Notify */ "./src/js/modules/Notify.js");
+/* harmony import */ var _modules_Welcome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Welcome */ "./src/js/modules/Welcome.js");
 
 
-$(function () {
-  console.log("Hello, world!");
-});
+
+
+/***/ }),
+
+/***/ "./src/js/modules/Bird.js":
+/*!********************************!*\
+  !*** ./src/js/modules/Bird.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Bird = {
+  flyAway: function flyAway() {
+    console.log("flyAway");
+  },
+  flyToBasket: function flyToBasket() {
+    console.log("flyToBasket");
+  },
+  setFastSpeed: function setFastSpeed() {
+    $("#bird__image").addClass("speed-fast");
+  },
+  setUsualSpeed: function setUsualSpeed() {
+    $("#bird__image").removeClass("speed-fast");
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Bird);
 
 /***/ }),
 
@@ -11040,6 +11066,44 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
   Notify.init();
 });
 /* harmony default export */ __webpack_exports__["default"] = (Notify);
+
+/***/ }),
+
+/***/ "./src/js/modules/Welcome.js":
+/*!***********************************!*\
+  !*** ./src/js/modules/Welcome.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Bird__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Bird */ "./src/js/modules/Bird.js");
+
+var Welcome = {
+  _handleStartButton: function _handleStartButton(e) {
+    e.preventDefault();
+    this.hideText();
+    setTimeout(function () {
+      _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBasket();
+    }, 300);
+  },
+  hideText: function hideText() {
+    $("#welcome__image").addClass("scaled");
+    $("#welcome__text").addClass("hidden");
+  },
+  showText: function showText() {
+    $("#welcome__image").removeClass("scaled");
+    $("#welcome__text").removeClass("hidden");
+  },
+  init: function init() {
+    $(document).on("click", ".welcome__button", this._handleStartButton.bind(this));
+  }
+};
+$(function () {
+  Welcome.init();
+});
+/* harmony default export */ __webpack_exports__["default"] = (Welcome);
 
 /***/ }),
 

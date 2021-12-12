@@ -1,11 +1,12 @@
 .red-wave {
 	max-width: 800px;
+	margin: 0 auto;
 	aspect-ratio: 1/1;
 	background: url("../images/red-wave.png") no-repeat;
 	background-size: contain;
 	display: flex;
 	flex-direction: column;
-	padding: calc(min(12vw, 90px)) 0;
+	padding: calc(min(15vw, 90px)) 0;
 
 	&__control {
 		text-align: center;
@@ -14,15 +15,17 @@
 	&__back {
 		text-align: center;
 		font-family: inherit;
+		font-size: calc(min(13vw, 60px));
+		line-height: 1;
 		color: #fff;
 
 		i {
-			font-size: 60px;
+			font-size: 1em;
 		}
 
 		span {
 			display: block;
-			font-size: 18px;
+			font-size: 18/60 + em;
 			font-weight: 700;
 		}
 	}
@@ -36,14 +39,14 @@
 	}
 
 	&__title {
-		font-size: 22px;
+		margin-bottom: 5/22 + em;
+		font-size: calc(min(3.8vw, 22px));
 		font-weight: 700;
 		line-height: (35/22);
 	}
 
 	&__desc {
-		margin-top: 5px;
-		font-size: 18px;
+		font-size: calc(min(3.5vw, 18px));
 		line-height: (28/18);
 	}
 
@@ -51,11 +54,27 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 44px;
+		font-size: calc(min(9vw, 44px));
 		color: #fff;
 
 		> a {
 			margin: 0 10px;
 		}
+	}
+}
+
+@media (max-width: 767.98px) {
+	.red-wave {
+		&__social {
+		}
+	}
+}
+
+@media (max-width: 599.98px) {
+	.red-wave {
+		margin-right: -40px;
+		margin-left: -40px;
+		padding-right: 50px;
+		padding-left: 50px;
 	}
 }

@@ -90,10 +90,9 @@
 	&__item--5 {
 		background: url(../images/toys/toy-tree.svg) no-repeat;
 		background-size: contain;
-		margin-left: -350px;
-		margin-top: 100px;
-		width: 115px;
-		max-width: 19vw;
+		width: 134/266 * 100%;
+		left: 38%;
+		top: 47%;
 		animation-delay: -3.5s;
 
 		&:before {
@@ -115,6 +114,29 @@
 			content: " ";
 			padding-top: 156/75 * 100%;
 			display: block;
+		}
+	}
+}
+
+@media (max-width: 767.98px) {
+	.toys {
+		&__tree {
+			left: -10vw;
+			margin-left: 0;
+		}
+
+		&__item {
+			&--2 {
+				margin-left: 0;
+				left: auto;
+				right: 4vw;
+			}
+
+			&--4 {
+				margin-top: -50px;
+				left: auto;
+				right: 14vw;
+			}
 		}
 	}
 }

@@ -1,0 +1,54 @@
+.lemon {
+	position: relative;
+	max-width: 620px;
+	aspect-ratio: 1/1;
+	background: url("../images/lemon.png") no-repeat 50% 50%;
+	background-size: contain;
+
+	&__question {
+		transition: all 0.2s;
+		position: absolute;
+		top: 40%;
+		left: 27%;
+		width: 207/620 * 100%;
+		background: url(../images/question.svg) no-repeat;
+		background-size: contain;
+
+		&:before {
+			content: " ";
+			padding-top: 202/207 * 100%;
+			display: block;
+		}
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	&__arrow {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 149/620 * 100%;
+		background: url(../images/arrow.svg) no-repeat;
+		background-size: contain;
+		animation: lemon-arrow-shake 1s infinite;
+
+		&:before {
+			content: " ";
+			padding-top: 125/115 * 100%;
+			display: block;
+		}
+	}
+}
+
+@keyframes lemon-arrow-shake {
+	0%,
+	100% {
+		transform: translate(0px, 0px);
+	}
+
+	50% {
+		transform: translate(-30px, -30px);
+	}
+}

@@ -24,7 +24,8 @@
 		top: 50%;
 		left: calc(min(20vw - 355px, 0px));
 		transform: translateY(-50%);
-		width: calc(min(20vw, 355px));
+		width: 20vw;
+		max-width: 355px;
 		background: url(../images/tree-left.png) no-repeat;
 		background-size: contain;
 

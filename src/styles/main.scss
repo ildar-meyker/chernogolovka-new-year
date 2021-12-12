@@ -5,6 +5,7 @@
 @import "./components/welcome";
 @import "./components/red-wave";
 @import "./components/snowflakes";
+@import "./components/lemon";
 @import "./components/toys";
 
 body {
@@ -22,14 +23,6 @@ body {
 	height: 122px;
 	background: url(../images/bird-states/1.svg) no-repeat;
 	animation: bird-fly 1s infinite;
-}
-
-.arrow {
-	width: 115px;
-	height: 125px;
-	background: url(../images/arrow.svg) no-repeat;
-	background-size: contain;
-	animation: arrow-move 1s infinite;
 }
 
 @keyframes bird-fly {
@@ -55,16 +48,5 @@ body {
 
 	100% {
 		background-image: url(../images/bird-states/6.svg);
-	}
-}
-
-@keyframes arrow-move {
-	0%,
-	100% {
-		transform: translate(0px, 0px);
-	}
-
-	50% {
-		transform: translate(-30px, -30px);
 	}
 }

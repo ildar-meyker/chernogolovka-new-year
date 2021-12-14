@@ -14,8 +14,11 @@ const Welcome = {
 
 		setTimeout(() => {
 			Bird.sitDown();
-			this._switchToStep2();
 		}, 8000);
+
+		setTimeout(() => {
+			this._switchToStep2();
+		}, 9000);
 	},
 
 	_handleRedWaveOver(e) {
@@ -61,10 +64,14 @@ const Welcome = {
 	},
 
 	_resetAnimation() {
-		$("#red-wave").removeClass("visible active hover");
+		$("#red-wave").addClass("hidden");
 		$("#welcome__section, #bird__image").removeClass("hidden");
 		this._showText();
 		Bird.reset();
+
+		setTimeout(() => {
+			$("#red-wave").removeClass("visible active hover hidden");
+		}, 500);
 	},
 
 	init() {

@@ -288,9 +288,10 @@ var Welcome = {
     }, 4000);
     setTimeout(function () {
       _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].sitDown();
-
-      _this._switchToStep2();
     }, 8000);
+    setTimeout(function () {
+      _this._switchToStep2();
+    }, 9000);
   },
   _handleRedWaveOver: function _handleRedWaveOver(e) {
     $("#red-wave").addClass("hover");
@@ -326,12 +327,15 @@ var Welcome = {
     $("#red-wave").addClass("active");
   },
   _resetAnimation: function _resetAnimation() {
-    $("#red-wave").removeClass("visible active hover");
+    $("#red-wave").addClass("hidden");
     $("#welcome__section, #bird__image").removeClass("hidden");
 
     this._showText();
 
     _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].reset();
+    setTimeout(function () {
+      $("#red-wave").removeClass("visible active hover hidden");
+    }, 500);
   },
   init: function init() {
     $(document).on("click", ".welcome__button", this._handleStartButton.bind(this));

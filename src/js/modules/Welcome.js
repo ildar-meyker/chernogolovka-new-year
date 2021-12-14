@@ -6,22 +6,24 @@ const Welcome = {
 
 		this.hideText();
 
-		setTimeout(() => {
-			Bird.flyToBasket();
-		}, 500);
+		Bird.flyToBasket();
 
 		setTimeout(() => {
 			Bird.flyToBox();
-		}, 5500);
+		}, 4000);
+
+		setTimeout(() => {
+			Bird.sitDown();
+		}, 8000);
 	},
 
 	hideText() {
-		$("#welcome__image").addClass("scaled");
+		$("#welcome__image__in1").addClass("scaled");
 		$("#welcome__text").addClass("hidden");
 	},
 
 	showText() {
-		$("#welcome__image").removeClass("scaled");
+		$("#welcome__image__in1").removeClass("scaled");
 		$("#welcome__text").removeClass("hidden");
 	},
 

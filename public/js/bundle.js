@@ -115,19 +115,11 @@ var Bird = {
   _state: {
     position: "initial"
   },
-  _fly: function _fly(points, duration) {
-    gsap.to("#bird__image", {
-      motionPath: {
-        path: points
-      },
-      duration: duration,
-      ease: "power1.inOut"
-    });
-  },
   _drawPoints: function _drawPoints(points) {
     points.forEach(function (item) {
       $("<div></div>").css({
         position: "absolute",
+        zIndex: "100",
         width: "10px",
         height: "10px",
         background: "#f00",
@@ -139,36 +131,30 @@ var Bird = {
   _getStartPoint: function _getStartPoint() {
     return {
       x: -120,
-      y: $(window).height() * 0.75
+      y: $(window).height() * 0.5
     };
   },
   _getBasketPoint: function _getBasketPoint() {
     var $img = $("#welcome__image");
     return {
-      x: $img.offset().left + 0.4 * 1.3 * $img.width(),
-      y: $img.offset().top + 0.5 * 1.3 * $img.height()
+      x: $img.offset().left + 0.5 * $img.width(),
+      y: $img.offset().top + 0.6 * $img.height() * 1.3 + $img.height() * 0.1
     };
   },
   _getBoxPoint: function _getBoxPoint() {
     var $img = $("#welcome__image");
     return {
-      x: $img.offset().left + 0.7561 * 1.3 * $img.width(),
-      y: $img.offset().top + 0.207 * 1.3 * $img.height()
+      x: $img.offset().left + 0.5 * $img.width() + 0.259649 * $img.width() * 1.3,
+      y: $img.offset().top + 0.213028 * $img.height() * 1.3 + $img.height() * 1.3 * 0.1
     };
   },
   _setToPoint: function _setToPoint(point) {
     gsap.set("#bird__image", {
-      xPercent: -50,
-      yPercent: -75,
+      xPercent: -65,
+      yPercent: -65,
       x: point.x,
       y: point.y
     });
-  },
-  _setFastSpeed: function _setFastSpeed() {
-    $("#bird__image").addClass("speed-fast");
-  },
-  _setUsualSpeed: function _setUsualSpeed() {
-    $("#bird__image").removeClass("speed-fast");
   },
   _handleWindowResize: function _handleWindowResize() {
     switch (this._state.position) {
@@ -185,12 +171,16 @@ var Bird = {
 
     var p2 = this._getBasketPoint();
 
-    this._setFastSpeed();
-
     this._setToPoint(p1);
 
-    this._fly([p1, p2], 5);
-
+    $("#bird__image__in1").removeClass("static flying-to-box").addClass("flying-to-basket");
+    gsap.to("#bird__image", {
+      motionPath: {
+        path: [p1, p2]
+      },
+      duration: 5,
+      ease: "power1.out"
+    });
     this._state.position = "basket";
   },
   flyToBox: function flyToBox() {
@@ -199,14 +189,21 @@ var Bird = {
     var p2 = this._getBoxPoint();
 
     var p3 = {
-      x: p1.x + 100,
-      y: p2.y - 100
+      x: p1.x + 70,
+      y: p2.y - 70
     };
+    $("#bird__image__in1").removeClass("static flying-to-basket").addClass("flying-to-box");
+    gsap.to("#bird__image", {
+      motionPath: {
+        path: [p1, p3, p2]
+      },
+      duration: 4,
+      ease: "power1.inOut"
+    });
     this._state.position = "box";
-
-    this._fly([p1, p3, p2], 4);
-
-    this._setUsualSpeed();
+  },
+  sitDown: function sitDown() {
+    $("#bird__image__in1").addClass("static");
   },
   init: function init() {
     $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
@@ -265,19 +262,20 @@ var Welcome = {
   _handleStartButton: function _handleStartButton(e) {
     e.preventDefault();
     this.hideText();
-    setTimeout(function () {
-      _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBasket();
-    }, 500);
+    _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBasket();
     setTimeout(function () {
       _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBox();
-    }, 5500);
+    }, 4000);
+    setTimeout(function () {
+      _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].sitDown();
+    }, 8000);
   },
   hideText: function hideText() {
-    $("#welcome__image").addClass("scaled");
+    $("#welcome__image__in1").addClass("scaled");
     $("#welcome__text").addClass("hidden");
   },
   showText: function showText() {
-    $("#welcome__image").removeClass("scaled");
+    $("#welcome__image__in1").removeClass("scaled");
     $("#welcome__text").removeClass("hidden");
   },
   init: function init() {

@@ -59,6 +59,15 @@
 		padding: 0 10px;
 	}
 
+	&__section {
+		transition: all 0.7s;
+
+		&.hidden {
+			transform: scale(0);
+			opacity: 0;
+		}
+	}
+
 	&__image {
 		max-width: 570px;
 		margin: 0 auto;

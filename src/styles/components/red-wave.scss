@@ -1,12 +1,69 @@
 .red-wave {
-	max-width: 800px;
-	margin: 0 auto;
-	aspect-ratio: 1/1;
-	background: url("../images/red-wave.png") no-repeat;
-	background-size: contain;
-	display: flex;
-	flex-direction: column;
-	padding: calc(min(15vw, 90px)) 0;
+	transition: all 0.7s;
+	position: absolute;
+	z-index: 20;
+	top: 50%;
+	transform: translateY(-50%) scale(0);
+	left: 0;
+	width: 100%;
+	visibility: hidden;
+	opacity: 0;
+
+	&.visible {
+		transform: translateY(-50%) scale(0.25);
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&.hover {
+		transform: translateY(-50%) scale(0.27);
+	}
+
+	&.active {
+		transform: translateY(-50%) scale(1);
+
+		.red-wave__content {
+			opacity: 1;
+		}
+
+		.red-wave__center {
+			cursor: default;
+		}
+
+		.red-wave__question {
+			pointer-events: none;
+			opacity: 0;
+		}
+	}
+
+	&__center {
+		position: relative;
+		max-width: 800px;
+		margin: 0 auto;
+		background: url("../images/red-wave.png") no-repeat;
+		background-size: contain;
+		cursor: pointer;
+	}
+
+	&__content {
+		aspect-ratio: 1/1;
+		display: flex;
+		flex-direction: column;
+		padding: calc(min(15vw, 90px)) 0;
+		transition: all 0.2s;
+		opacity: 0;
+	}
+
+	&__question {
+		transition: all 0.2s;
+		position: absolute;
+		top: 13%;
+		left: 0;
+		height: 70%;
+		width: 100%;
+		background: url("../images/question.svg") no-repeat 50% 50%;
+		background-size: contain;
+	}
 
 	&__control {
 		text-align: center;
@@ -30,7 +87,7 @@
 		}
 	}
 
-	&__content {
+	&__text {
 		margin: auto;
 		max-width: 490px;
 		text-transform: uppercase;
@@ -72,9 +129,14 @@
 
 @media (max-width: 599.98px) {
 	.red-wave {
-		margin-right: -40px;
-		margin-left: -40px;
-		padding-right: 50px;
-		padding-left: 50px;
+		&__center {
+			margin-right: -40px;
+			margin-left: -40px;
+		}
+
+		&__content {
+			padding-right: 50px;
+			padding-left: 50px;
+		}
 	}
 }

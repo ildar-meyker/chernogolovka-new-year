@@ -124,6 +124,14 @@ const Bird = {
 		$("#bird__image__in1").addClass("static");
 	},
 
+	reset() {
+		const p1 = this._getStartPoint();
+
+		$("#bird__fruits").children().removeClass("active");
+		$("#bird__image").removeClass("hover");
+		this._setToPoint(p1);
+	},
+
 	init() {
 		$(window).on(
 			"resize",

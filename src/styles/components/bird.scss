@@ -1,5 +1,6 @@
 .bird {
 	&__image {
+		transition: opacity 0.2s;
 		transform: translate(-100%, -100%);
 		position: absolute;
 		top: 0;
@@ -9,6 +10,10 @@
 
 		&.hover {
 			z-index: 200;
+		}
+
+		&.hidden {
+			opacity: 0;
 		}
 
 		&__in1 {

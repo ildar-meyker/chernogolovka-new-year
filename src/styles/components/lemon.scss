@@ -1,29 +1,27 @@
 .lemon {
-	position: relative;
-	max-width: 620px;
-	margin: 0 auto;
-	aspect-ratio: 1/1;
-	background: url("../images/lemon.png") no-repeat 50% 50%;
-	background-size: contain;
+	transition: all 0.7s;
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	transform: translateY(-50%) scale(0);
+	left: 0;
+	width: 100%;
+	visibility: hidden;
+	opacity: 0;
 
-	&__question {
-		transition: all 0.2s;
-		position: absolute;
-		top: 40%;
-		left: 27%;
-		width: 207/620 * 100%;
-		background: url(../images/question.svg) no-repeat;
+	&.visible {
+		transform: translateY(-50%) scale(1);
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&__center {
+		position: relative;
+		max-width: 620px;
+		margin: 0 auto;
+		aspect-ratio: 1/1;
+		background: url("../images/lemon.png") no-repeat 50% 50%;
 		background-size: contain;
-
-		&:before {
-			content: " ";
-			padding-top: 202/207 * 100%;
-			display: block;
-		}
-
-		&:hover {
-			transform: scale(1.1);
-		}
 	}
 
 	&__arrow {

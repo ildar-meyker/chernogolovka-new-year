@@ -1,18 +1,14 @@
 .loader {
 	.welcome,
 	.toys,
-	.bird,
-	.lemon,
-	.red-wave {
+	.bird {
 		transition: opacity 1s 1s;
 	}
 
 	&.active {
 		.welcome,
 		.toys,
-		.bird,
-		.lemon,
-		.red-wave {
+		.bird {
 			opacity: 0;
 		}
 		.loader__progress {

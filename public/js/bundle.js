@@ -213,6 +213,14 @@ var Bird = {
     $("#bird__image").addClass("hover");
     $("#bird__image__in1").addClass("static");
   },
+  reset: function reset() {
+    var p1 = this._getStartPoint();
+
+    $("#bird__fruits").children().removeClass("active");
+    $("#bird__image").removeClass("hover");
+
+    this._setToPoint(p1);
+  },
   init: function init() {
     $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
   }
@@ -268,26 +276,69 @@ __webpack_require__.r(__webpack_exports__);
 
 var Welcome = {
   _handleStartButton: function _handleStartButton(e) {
+    var _this = this;
+
     e.preventDefault();
-    this.hideText();
+
+    this._hideText();
+
     _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBasket();
     setTimeout(function () {
       _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBox();
     }, 4000);
     setTimeout(function () {
       _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].sitDown();
+
+      _this._switchToStep2();
     }, 8000);
   },
-  hideText: function hideText() {
+  _handleRedWaveOver: function _handleRedWaveOver(e) {
+    $("#red-wave").addClass("hover");
+  },
+  _handleRedWaveOut: function _handleRedWaveOut(e) {
+    $("#red-wave").removeClass("hover");
+  },
+  _handleRedWaveClick: function _handleRedWaveClick(e) {
+    e.preventDefault();
+    if ($(e.target).closest(".red-wave__back").length > 0) return;
+
+    this._switchToStep3();
+  },
+  _handleBackButton: function _handleBackButton(e) {
+    e.preventDefault();
+
+    this._resetAnimation();
+  },
+  _hideText: function _hideText() {
     $("#welcome__image__in1").addClass("scaled");
     $("#welcome__text").addClass("hidden");
   },
-  showText: function showText() {
+  _showText: function _showText() {
     $("#welcome__image__in1").removeClass("scaled");
     $("#welcome__text").removeClass("hidden");
   },
+  _switchToStep2: function _switchToStep2() {
+    $("#lemon, #red-wave").addClass("visible");
+    $("#welcome__section, #bird__image").addClass("hidden");
+  },
+  _switchToStep3: function _switchToStep3() {
+    $("#lemon").removeClass("visible");
+    $("#red-wave").addClass("active");
+  },
+  _resetAnimation: function _resetAnimation() {
+    $("#red-wave").removeClass("visible active hover");
+    $("#welcome__section, #bird__image").removeClass("hidden");
+
+    this._showText();
+
+    _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].reset();
+  },
   init: function init() {
     $(document).on("click", ".welcome__button", this._handleStartButton.bind(this));
+    $(document).on("mouseenter", ".red-wave__center", this._handleRedWaveOver.bind(this));
+    $(document).on("mouseleave", ".red-wave__center", this._handleRedWaveOut.bind(this));
+    $(document).on("click", ".red-wave__center", this._handleRedWaveClick.bind(this));
+    $(document).on("click", ".red-wave__back", this._handleBackButton.bind(this));
   }
 };
 $(function () {

@@ -7,7 +7,12 @@
 		width: 30vw;
 		max-width: 110px;
 
+		&.hover {
+			z-index: 200;
+		}
+
 		&__in1 {
+			position: relative;
 			background: url(../images/bird-states/1.svg) no-repeat;
 			background-size: contain;
 			animation: bird-fly 0.2s infinite;
@@ -29,6 +34,53 @@
 			&.static {
 				background-image: url(../images/bird-states/static.svg);
 				animation: none;
+				transform: rotate(-35deg);
+			}
+		}
+	}
+
+	&__fruits {
+		&__item {
+			transform: rotateZ(45deg);
+			transform-origin: 0 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 70%;
+			height: 70%;
+			display: none;
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			&.active {
+				display: block;
+			}
+
+			&--2 {
+				background-image: url(../images/bird-fruits/2.png);
+				top: 52%;
+				left: 98%;
+			}
+
+			&--3 {
+				background-image: url(../images/bird-fruits/3.png);
+				top: 52%;
+				left: 97%;
+			}
+			&--4 {
+				background-image: url(../images/bird-fruits/4.png);
+				top: 52%;
+				left: 98%;
+			}
+			&--5 {
+				background-image: url(../images/bird-fruits/5.png);
+				top: 52%;
+				left: 94%;
+			}
+			&--6 {
+				background-image: url(../images/bird-fruits/6.png);
+				top: 54%;
+				left: 98%;
 			}
 		}
 	}

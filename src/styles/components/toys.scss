@@ -23,7 +23,7 @@
 		top: 0;
 		left: 50%;
 		transform-origin: 50% 0;
-		animation: toys-shake-5deg 2s 0s infinite ease-in-out;
+		animation: toys-shake-5deg 4s 0s infinite ease-in-out;
 	}
 
 	&__item--1,
@@ -53,7 +53,7 @@
 		max-width: 10vw;
 		animation-delay: -1.3s;
 		animation-name: toys-shake-1deg;
-		animation-duration: 1.5s;
+		animation-duration: 3.5s;
 	}
 
 	&__item--3,
@@ -75,7 +75,7 @@
 		max-width: 21vw;
 		animation-delay: -2s;
 		animation-name: toys-shake-1deg;
-		animation-duration: 1.5s;
+		animation-duration: 3.5s;
 	}
 
 	// snowflake right

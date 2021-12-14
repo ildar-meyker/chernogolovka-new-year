@@ -1,18 +1,13 @@
 .bird {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 50vw;
-	height: 50vw;
-
 	&__image {
-		transform: translate(-50%, -50%);
+		transform: translate(-100%, -100%);
 		position: absolute;
-		top: 100%;
-		left: 50%;
+		top: 0;
+		left: 0;
 		width: 10vw;
 		max-width: 110px;
 		background: url(../images/bird-states/1.svg) no-repeat;
+		background-size: contain;
 		animation: bird-fly 0.8s infinite;
 
 		&:before {

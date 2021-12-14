@@ -22,7 +22,7 @@
 		position: absolute;
 		z-index: 10;
 		top: 50%;
-		left: calc(min(20vw - 355px, 0px));
+		left: calc(min(20vw - 300px, 0px));
 		transform: translateY(-50%);
 		width: 20vw;
 		max-width: 355px;
@@ -40,7 +40,7 @@
 		position: absolute;
 		z-index: 10;
 		top: 50%;
-		right: calc(min(20vw - 380px, 0px));
+		right: calc(min(20vw - 300px, 0px));
 		transform: translateY(-50%);
 		width: 20vw;
 		max-width: 380px;
@@ -60,8 +60,10 @@
 	}
 
 	&__image {
-		transition: all 0.3s;
+		transition: all 0.5s;
 		transform-origin: 50% 0;
+		position: relative;
+		z-index: 10;
 		max-width: 570px;
 		margin: 0 auto;
 		background: url(../images/basket.png) no-repeat 50% 50%;

@@ -4,7 +4,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 10vw;
+		width: 30vw;
 		max-width: 110px;
 		background: url(../images/bird-states/1.svg) no-repeat;
 		background-size: contain;
@@ -17,7 +17,7 @@
 		}
 
 		&.speed-fast {
-			animation-duration: 0.3s;
+			animation-duration: 0.2s;
 		}
 	}
 }

@@ -1,37 +1,19 @@
 const Bird = {
-	calcPath(p1x, p1y, p2x, p2y, offset) {
-		// mid-point of line:
-		var mpx = (p2x + p1x) * 0.5;
-		var mpy = (p2y + p1y) * 0.5;
-
-		// angle of perpendicular to line:
-		var theta = Math.atan2(p2y - p1y, p2x - p1x) - Math.PI / 2;
-
-		// distance of control point from mid-point of line:
-		var offset = offset || 200;
-
-		// location of control point:
-		var c1x = mpx + offset * Math.cos(theta);
-		var c1y = mpy + offset * Math.sin(theta);
-
-		// construct the command to draw a quadratic curve
-		return (
-			"M" +
-			p1x +
-			" " +
-			p1y +
-			" Q " +
-			c1x +
-			" " +
-			c1y +
-			" " +
-			p2x +
-			" " +
-			p2y
-		);
+	_state: {
+		position: "initial",
 	},
 
-	drawControlPoints(points) {
+	_fly(points, duration) {
+		gsap.to("#bird__image", {
+			motionPath: {
+				path: points,
+			},
+			duration: duration,
+			ease: "power1.inOut",
+		});
+	},
+
+	_drawPoints(points) {
 		points.forEach((item) => {
 			$("<div></div>")
 				.css({
@@ -46,61 +28,89 @@ const Bird = {
 		});
 	},
 
-	getPointsToBox() {
+	_getStartPoint() {
+		return {
+			x: -120,
+			y: $(window).height() * 0.75,
+		};
+	},
+
+	_getBasketPoint() {
 		const $img = $("#welcome__image");
 
-		const p1X = -200;
-		const p1Y = $(window).height() * 0.75;
-
-		const p3X = $img.offset().left + 0.7561 * $img.width();
-		const p3Y = $img.offset().top + 0.207 * $img.height();
-
-		const p2X = p3X * 0.5;
-		const p2Y = p1Y * 0.5;
-
-		const points = [
-			{ x: p1X, y: p1Y },
-			{ x: p2X, y: p2Y },
-			{ x: p3X, y: p3Y },
-		];
-
-		return points;
+		return {
+			x: $img.offset().left + 0.4 * 1.3 * $img.width(),
+			y: $img.offset().top + 0.5 * 1.3 * $img.height(),
+		};
 	},
 
-	flyAway() {
-		console.log("flyAway");
+	_getBoxPoint() {
+		const $img = $("#welcome__image");
+
+		return {
+			x: $img.offset().left + 0.7561 * 1.3 * $img.width(),
+			y: $img.offset().top + 0.207 * 1.3 * $img.height(),
+		};
 	},
 
-	flyToPresentBox() {
-		const points = this.getPointsToBox();
-
-		console.log(points);
-
+	_setToPoint(point) {
 		gsap.set("#bird__image", {
 			xPercent: -50,
 			yPercent: -75,
-			x: points[0].x,
-			y: points[0].y,
-		});
-
-		gsap.to("#bird__image", {
-			motionPath: {
-				path: points,
-			},
-			duration: 5,
-			ease: "power1.inOut",
+			x: point.x,
+			y: point.y,
 		});
 	},
 
-	setFastSpeed() {
+	_setFastSpeed() {
 		$("#bird__image").addClass("speed-fast");
 	},
 
-	setUsualSpeed() {
+	_setUsualSpeed() {
 		$("#bird__image").removeClass("speed-fast");
+	},
+
+	_handleWindowResize() {
+		switch (this._state.position) {
+			case "basket":
+				this._setToPoint(this._getBasketPoint());
+			case "box":
+				this._setToPoint(this._getBoxPoint());
+		}
+	},
+
+	flyToBasket() {
+		const p1 = this._getStartPoint();
+		const p2 = this._getBasketPoint();
+
+		this._setFastSpeed();
+		this._setToPoint(p1);
+		this._fly([p1, p2], 5);
+		this._state.position = "basket";
+	},
+
+	flyToBox() {
+		const p1 = this._getBasketPoint();
+		const p2 = this._getBoxPoint();
+		const p3 = { x: p1.x + 100, y: p2.y - 100 };
+
+		this._state.position = "box";
+		this._fly([p1, p3, p2], 4);
+		this._setUsualSpeed();
+	},
+
+	init() {
+		$(window).on(
+			"resize",
+			$.throttle(250, this._handleWindowResize.bind(this))
+		);
 	},
 };
 
 window.Bird = Bird;
+
+$(function () {
+	Bird.init();
+});
 
 export default Bird;

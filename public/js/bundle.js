@@ -112,21 +112,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var Bird = {
-  calcPath: function calcPath(p1x, p1y, p2x, p2y, offset) {
-    // mid-point of line:
-    var mpx = (p2x + p1x) * 0.5;
-    var mpy = (p2y + p1y) * 0.5; // angle of perpendicular to line:
-
-    var theta = Math.atan2(p2y - p1y, p2x - p1x) - Math.PI / 2; // distance of control point from mid-point of line:
-
-    var offset = offset || 200; // location of control point:
-
-    var c1x = mpx + offset * Math.cos(theta);
-    var c1y = mpy + offset * Math.sin(theta); // construct the command to draw a quadratic curve
-
-    return "M" + p1x + " " + p1y + " Q " + c1x + " " + c1y + " " + p2x + " " + p2y;
+  _state: {
+    position: "initial"
   },
-  drawControlPoints: function drawControlPoints(points) {
+  _fly: function _fly(points, duration) {
+    gsap.to("#bird__image", {
+      motionPath: {
+        path: points
+      },
+      duration: duration,
+      ease: "power1.inOut"
+    });
+  },
+  _drawPoints: function _drawPoints(points) {
     points.forEach(function (item) {
       $("<div></div>").css({
         position: "absolute",
@@ -138,54 +136,86 @@ var Bird = {
       }).appendTo($("body"));
     });
   },
-  getPointsToBox: function getPointsToBox() {
+  _getStartPoint: function _getStartPoint() {
+    return {
+      x: -120,
+      y: $(window).height() * 0.75
+    };
+  },
+  _getBasketPoint: function _getBasketPoint() {
     var $img = $("#welcome__image");
-    var p1X = -200;
-    var p1Y = $(window).height() * 0.75;
-    var p3X = $img.offset().left + 0.7561 * $img.width();
-    var p3Y = $img.offset().top + 0.207 * $img.height();
-    var p2X = p3X * 0.5;
-    var p2Y = p1Y * 0.5;
-    var points = [{
-      x: p1X,
-      y: p1Y
-    }, {
-      x: p2X,
-      y: p2Y
-    }, {
-      x: p3X,
-      y: p3Y
-    }];
-    return points;
+    return {
+      x: $img.offset().left + 0.4 * 1.3 * $img.width(),
+      y: $img.offset().top + 0.5 * 1.3 * $img.height()
+    };
   },
-  flyAway: function flyAway() {
-    console.log("flyAway");
+  _getBoxPoint: function _getBoxPoint() {
+    var $img = $("#welcome__image");
+    return {
+      x: $img.offset().left + 0.7561 * 1.3 * $img.width(),
+      y: $img.offset().top + 0.207 * 1.3 * $img.height()
+    };
   },
-  flyToPresentBox: function flyToPresentBox() {
-    var points = this.getPointsToBox();
-    console.log(points);
+  _setToPoint: function _setToPoint(point) {
     gsap.set("#bird__image", {
       xPercent: -50,
       yPercent: -75,
-      x: points[0].x,
-      y: points[0].y
-    });
-    gsap.to("#bird__image", {
-      motionPath: {
-        path: points
-      },
-      duration: 5,
-      ease: "power1.inOut"
+      x: point.x,
+      y: point.y
     });
   },
-  setFastSpeed: function setFastSpeed() {
+  _setFastSpeed: function _setFastSpeed() {
     $("#bird__image").addClass("speed-fast");
   },
-  setUsualSpeed: function setUsualSpeed() {
+  _setUsualSpeed: function _setUsualSpeed() {
     $("#bird__image").removeClass("speed-fast");
+  },
+  _handleWindowResize: function _handleWindowResize() {
+    switch (this._state.position) {
+      case "basket":
+        this._setToPoint(this._getBasketPoint());
+
+      case "box":
+        this._setToPoint(this._getBoxPoint());
+
+    }
+  },
+  flyToBasket: function flyToBasket() {
+    var p1 = this._getStartPoint();
+
+    var p2 = this._getBasketPoint();
+
+    this._setFastSpeed();
+
+    this._setToPoint(p1);
+
+    this._fly([p1, p2], 5);
+
+    this._state.position = "basket";
+  },
+  flyToBox: function flyToBox() {
+    var p1 = this._getBasketPoint();
+
+    var p2 = this._getBoxPoint();
+
+    var p3 = {
+      x: p1.x + 100,
+      y: p2.y - 100
+    };
+    this._state.position = "box";
+
+    this._fly([p1, p3, p2], 4);
+
+    this._setUsualSpeed();
+  },
+  init: function init() {
+    $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
   }
 };
 window.Bird = Bird;
+$(function () {
+  Bird.init();
+});
 /* harmony default export */ __webpack_exports__["default"] = (Bird);
 
 /***/ }),
@@ -237,7 +267,10 @@ var Welcome = {
     this.hideText();
     setTimeout(function () {
       _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBasket();
-    }, 300);
+    }, 500);
+    setTimeout(function () {
+      _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBox();
+    }, 5500);
   },
   hideText: function hideText() {
     $("#welcome__image").addClass("scaled");

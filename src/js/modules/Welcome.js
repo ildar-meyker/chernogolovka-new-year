@@ -8,7 +8,11 @@ const Welcome = {
 
 		setTimeout(() => {
 			Bird.flyToBasket();
-		}, 300);
+		}, 500);
+
+		setTimeout(() => {
+			Bird.flyToBox();
+		}, 5500);
 	},
 
 	hideText() {

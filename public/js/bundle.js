@@ -156,10 +156,6 @@ var Bird = {
       y: point.y
     });
   },
-  _getRandomFruit: function _getRandomFruit() {
-    var fruits = $("#bird__fruits").children().toArray();
-    $(_.shuffle(fruits)[0]).addClass("active");
-  },
   _handleWindowResize: function _handleWindowResize() {
     switch (this._state.position) {
       case "basket":
@@ -196,9 +192,6 @@ var Bird = {
       x: p1.x + 70,
       y: p2.y - 70
     };
-
-    this._getRandomFruit();
-
     $("#bird__image__in1").removeClass("static flying-to-basket").addClass("flying-to-box");
     gsap.to("#bird__image", {
       motionPath: {
@@ -276,6 +269,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Bird__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Bird */ "./src/js/modules/Bird.js");
 
 var Welcome = {
+  _getRandomFruit: function _getRandomFruit() {
+    var fruits = $("#bird__fruits").children().toArray();
+
+    var selected = _.shuffle(fruits)[0];
+
+    var text = $(selected).data("text");
+    var image = $(selected).data("image");
+    var link = $(selected).data("link");
+    $(selected).addClass("active");
+    $("#lemon__center").css("background-image", 'url("' + image + '")');
+    $("#red-wave__button").attr("href", link);
+    $("#red-wave__text").html(text);
+  },
   _handleStartButton: function _handleStartButton(e) {
     var _this = this;
 
@@ -285,6 +291,8 @@ var Welcome = {
 
     _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBasket();
     setTimeout(function () {
+      _this._getRandomFruit();
+
       _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBox();
     }, 4000);
     setTimeout(function () {

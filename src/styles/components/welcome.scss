@@ -116,6 +116,7 @@
 	&__button {
 		transition: all 0.2s;
 		position: relative;
+		display: inline-block;
 		min-width: 220px;
 		padding: 20/18 + em;
 		background: #3fa22a;

@@ -1,6 +1,22 @@
 import Bird from "./Bird";
 
 const Welcome = {
+	_getRandomFruit() {
+		const fruits = $("#bird__fruits").children().toArray();
+
+		const selected = _.shuffle(fruits)[0];
+
+		const text = $(selected).data("text");
+		const image = $(selected).data("image");
+		const link = $(selected).data("link");
+
+		$(selected).addClass("active");
+
+		$("#lemon__center").css("background-image", 'url("' + image + '")');
+		$("#red-wave__button").attr("href", link);
+		$("#red-wave__text").html(text);
+	},
+
 	_handleStartButton(e) {
 		e.preventDefault();
 
@@ -9,6 +25,7 @@ const Welcome = {
 		Bird.flyToBasket();
 
 		setTimeout(() => {
+			this._getRandomFruit();
 			Bird.flyToBox();
 		}, 4000);
 

@@ -62,11 +62,6 @@ const Bird = {
 		});
 	},
 
-	_getRandomFruit() {
-		const fruits = $("#bird__fruits").children().toArray();
-		$(_.shuffle(fruits)[0]).addClass("active");
-	},
-
 	_handleWindowResize() {
 		switch (this._state.position) {
 			case "basket":
@@ -101,8 +96,6 @@ const Bird = {
 		const p1 = this._getBasketPoint();
 		const p2 = this._getBoxPoint();
 		const p3 = { x: p1.x + 70, y: p2.y - 70 };
-
-		this._getRandomFruit();
 
 		$("#bird__image__in1")
 			.removeClass("static flying-to-basket")

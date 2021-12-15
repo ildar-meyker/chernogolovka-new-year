@@ -19,7 +19,8 @@
 		position: relative;
 		max-width: 620px;
 		margin: 0 auto;
-		background: url("../images/lemon.png") no-repeat 50% 50%;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
 		background-size: contain;
 
 		&:before {

@@ -49,10 +49,20 @@
 		background: url("../images/red-wave.png") no-repeat;
 		background-size: contain;
 		cursor: pointer;
+
+		&:before {
+			content: " ";
+			padding-top: 100%;
+			display: block;
+		}
 	}
 
 	&__content {
-		aspect-ratio: 1/1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		padding: calc(min(15vw, 90px)) 0;

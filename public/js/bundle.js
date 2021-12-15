@@ -310,6 +310,9 @@ var Welcome = {
 
     this._resetAnimation();
   },
+  _handleWindowResize: function _handleWindowResize() {
+    this._setRadialBgWidth();
+  },
   _hideText: function _hideText() {
     $("#welcome__image__in1").addClass("scaled");
     $("#welcome__text").addClass("hidden");
@@ -317,6 +320,10 @@ var Welcome = {
   _showText: function _showText() {
     $("#welcome__image__in1").removeClass("scaled");
     $("#welcome__text").removeClass("hidden");
+  },
+  _setRadialBgWidth: function _setRadialBgWidth() {
+    var $radialBg = $("#welcome__radial-bg");
+    $radialBg.width($radialBg.height());
   },
   _switchToStep2: function _switchToStep2() {
     $("#lemon, #red-wave").addClass("visible");
@@ -343,6 +350,9 @@ var Welcome = {
     $(document).on("mouseleave", ".red-wave__center", this._handleRedWaveOut.bind(this));
     $(document).on("click", ".red-wave__center", this._handleRedWaveClick.bind(this));
     $(document).on("click", ".red-wave__back", this._handleBackButton.bind(this));
+    $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
+
+    this._setRadialBgWidth();
   }
 };
 $(function () {

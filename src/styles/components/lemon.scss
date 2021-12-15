@@ -19,9 +19,14 @@
 		position: relative;
 		max-width: 620px;
 		margin: 0 auto;
-		aspect-ratio: 1/1;
 		background: url("../images/lemon.png") no-repeat 50% 50%;
 		background-size: contain;
+
+		&:before {
+			content: " ";
+			padding-top: 100%;
+			display: block;
+		}
 	}
 
 	&__arrow {

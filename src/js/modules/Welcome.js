@@ -43,6 +43,10 @@ const Welcome = {
 		this._resetAnimation();
 	},
 
+	_handleWindowResize() {
+		this._setRadialBgWidth();
+	},
+
 	_hideText() {
 		$("#welcome__image__in1").addClass("scaled");
 		$("#welcome__text").addClass("hidden");
@@ -51,6 +55,11 @@ const Welcome = {
 	_showText() {
 		$("#welcome__image__in1").removeClass("scaled");
 		$("#welcome__text").removeClass("hidden");
+	},
+
+	_setRadialBgWidth() {
+		const $radialBg = $("#welcome__radial-bg");
+		$radialBg.width($radialBg.height());
 	},
 
 	_switchToStep2() {
@@ -104,6 +113,13 @@ const Welcome = {
 			".red-wave__back",
 			this._handleBackButton.bind(this)
 		);
+
+		$(window).on(
+			"resize",
+			$.throttle(250, this._handleWindowResize.bind(this))
+		);
+
+		this._setRadialBgWidth();
 	},
 };
 

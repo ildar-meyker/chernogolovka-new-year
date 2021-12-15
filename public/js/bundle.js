@@ -280,7 +280,7 @@ var Welcome = {
     $(selected).addClass("active");
     $("#lemon__center").css("background-image", 'url("' + image + '")');
     $("#red-wave__button").attr("href", link);
-    $("#red-wave__text").html(text);
+    $("#red-wave__desc").html(text);
   },
   _handleStartButton: function _handleStartButton(e) {
     var _this = this;

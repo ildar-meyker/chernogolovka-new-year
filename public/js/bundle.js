@@ -218,6 +218,7 @@ var Bird = {
 
     $("#bird__fruits").children().removeClass("active");
     $("#bird__image").removeClass("hover");
+    this._state.position = "initial";
 
     this._setToPoint(p1);
   },

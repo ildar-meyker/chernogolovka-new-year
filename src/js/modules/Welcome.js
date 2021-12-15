@@ -18,8 +18,6 @@ const Welcome = {
 	},
 
 	_handleStartButton(e) {
-		e.preventDefault();
-
 		this._hideText();
 
 		Bird.flyToBasket();
@@ -47,16 +45,12 @@ const Welcome = {
 	},
 
 	_handleRedWaveClick(e) {
-		e.preventDefault();
-
 		if ($(e.target).closest(".red-wave__back").length > 0) return;
 
 		this._switchToStep3();
 	},
 
 	_handleBackButton(e) {
-		e.preventDefault();
-
 		this._resetAnimation();
 	},
 

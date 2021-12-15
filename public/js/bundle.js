@@ -285,8 +285,6 @@ var Welcome = {
   _handleStartButton: function _handleStartButton(e) {
     var _this = this;
 
-    e.preventDefault();
-
     this._hideText();
 
     _Bird__WEBPACK_IMPORTED_MODULE_0__["default"].flyToBasket();
@@ -309,14 +307,11 @@ var Welcome = {
     $("#red-wave").removeClass("hover");
   },
   _handleRedWaveClick: function _handleRedWaveClick(e) {
-    e.preventDefault();
     if ($(e.target).closest(".red-wave__back").length > 0) return;
 
     this._switchToStep3();
   },
   _handleBackButton: function _handleBackButton(e) {
-    e.preventDefault();
-
     this._resetAnimation();
   },
   _handleWindowResize: function _handleWindowResize() {

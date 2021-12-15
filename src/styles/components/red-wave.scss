@@ -105,7 +105,7 @@
 
 	&__text {
 		margin: auto;
-		max-width: 600px;
+		padding: 0 10%;
 		text-align: center;
 		color: #fff;
 	}
@@ -113,14 +113,14 @@
 	&__title {
 		text-transform: uppercase;
 		margin-bottom: 0.5em;
-		font-size: calc(min(5vw, 32px));
+		font-size: calc(min(3.8vw, 26px));
 		font-weight: 700;
 		line-height: (35/22);
 	}
 
 	&__desc {
 		margin-bottom: 1em;
-		font-size: calc(min(4vw, 26px));
+		font-size: calc(min(3.5vw, 24px));
 		line-height: 1.4;
 	}
 
@@ -172,6 +172,11 @@
 		&__content {
 			padding-right: 50px;
 			padding-left: 50px;
+		}
+
+		&__text {
+			padding-right: 0;
+			padding-left: 0;
 		}
 	}
 }

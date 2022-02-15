@@ -23,7 +23,6 @@
 		top: 0;
 		left: 50%;
 		transform-origin: 50% 0;
-		animation: toys-shake-5deg 4s 0s infinite ease-in-out;
 	}
 
 	&__item--1,
@@ -51,9 +50,7 @@
 		margin-left: 420px;
 		width: 60px;
 		max-width: 10vw;
-		animation-delay: -1.3s;
-		animation-name: toys-shake-1deg;
-		animation-duration: 3.5s;
+		animation: toys-shake-1deg 3.5s -1.3s infinite ease-in-out;
 	}
 
 	&__item--3,
@@ -73,9 +70,6 @@
 		margin-left: -570px;
 		width: 126px;
 		max-width: 21vw;
-		animation-delay: -2s;
-		animation-name: toys-shake-1deg;
-		animation-duration: 3.5s;
 	}
 
 	// snowflake right
@@ -84,7 +78,6 @@
 		margin-top: -70px;
 		width: 94px;
 		max-width: 15.6vw;
-		animation-delay: -0.5s;
 	}
 
 	&__item--5 {
@@ -93,7 +86,7 @@
 		width: 134/266 * 100%;
 		left: 38%;
 		top: 47%;
-		animation-delay: -3.5s;
+		animation: toys-shake-5deg 4s 3.5s infinite ease-in-out;
 
 		&:before {
 			content: " ";
@@ -108,7 +101,6 @@
 		margin-left: 610px;
 		width: 74px;
 		max-width: 12vw;
-		animation-delay: -2s;
 
 		&:before {
 			content: " ";
